@@ -1,1 +1,0 @@
-**This directory contains executable files indicating shell commands**

@@ -1,2 +1,2 @@
 #!/bin/bash
-file -F HOLBERTON holberton.mgc
+file holberton.mgc
