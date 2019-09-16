@@ -1,2 +1,2 @@
 #!/bin/bash
-find -mindepth 1 -empty | ls -1a | cat
+find -maxdepth 5 -empty | ls -1a 
