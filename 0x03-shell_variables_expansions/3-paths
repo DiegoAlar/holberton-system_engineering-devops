@@ -1,0 +1,3 @@
+#!/bin/bash
+echo $PATH | find . -d | ls -1 | wc -l
+
