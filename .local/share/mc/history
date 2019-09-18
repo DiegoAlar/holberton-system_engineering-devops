@@ -1,0 +1,23 @@
+[input-def]
+0=*
+
+[input2]
+0=/home/vagrant/holbertonschool-zero_day/
+
+[cmdline]
+0=update_script5m5
+1=m
+2=5
+3=10
+4=
+
+[Dir Hist New Right Panel]
+0=/home/vagrant/holbertonschool-zero_day
+
+[Dir Hist New Left Panel]
+0=/home/vagrant/holbertonschool-zero_day/0x03-git/0x03-git
+1=/home/vagrant
+2=/home/vagrant/holbertonschool-zero_day/0x00-vagrant
+3=/home/vagrant/holbertonschool-zero_day/0x03-git/bash
+4=/home/vagrant/holbertonschool-zero_day/0x03-git
+5=/home/vagrant/holbertonschool-zero_day
