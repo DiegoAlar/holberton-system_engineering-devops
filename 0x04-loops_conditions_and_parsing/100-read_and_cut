@@ -5,7 +5,7 @@
 # user id
 # Home directory path for the user
 FILE="/etc/passwd"
-while IFS=: read -r line line2
+while IFS=: read -r line line2 line3 line4 line5 line6 line7
 do
-	echo "$line2" 
+	echo "$line:$line3:$line6"
 done < "$FILE"	
