@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# command to fix issue 
+sudo service apache2 start
+echo "Holberton School" > /var/www/html/index.html 
