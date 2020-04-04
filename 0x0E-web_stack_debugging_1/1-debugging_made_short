@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Nginx must be running, and listening on port 80 of all the server’s active IPv4 IPs
-sudo sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
-sudo pkill -1 -f '/usr/sbin/nginx'
-
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+sudo service restart
+sudo service nginx stop
