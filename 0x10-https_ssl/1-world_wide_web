@@ -11,7 +11,7 @@ show_subd_info () {
         then
           URL=$2.$1
           IP="$(dig "$URL" +short)"
-          REC="$(dig $URL | grep '^'"$URL" | cut -f4)"
+          REC="$(dig "$URL" | grep '^'"$URL" | cut -f4)"
           print_msg "$2" "$REC" "$IP"
     elif [ $# -eq 1 ]
         then
@@ -23,4 +23,4 @@ show_subd_info () {
           done
     fi
 }
-show_subd_info $1 $2
+show_subd_info "$1" "$2"
