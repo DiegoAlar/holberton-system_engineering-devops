@@ -11,16 +11,21 @@ show_subd_info () {
         then
           URL=$2.$1
           IP="$(dig "$URL" +short)"
-          REC="$(dig "$URL" | grep '^'"$URL" | cut -f4)"
+          REC="$(dig "$URL" | grep '^'"$URL" | awk '{print $4}')"
           print_msg "$2" "$REC" "$IP"
     elif [ $# -eq 1 ]
         then
           for sub in $SUBS;do
-            URL=$sub.$1
+            URL="$sub"."$1"
             IP="$(dig "$URL" +short)"
-            REC="$(dig "$URL" | grep '^'"$URL" | cut -f4)"
+            REC="$(dig "$URL" | grep '^'"$URL" | awk '{print $4}')"
             print_msg "$sub" "$REC" "$IP"
           done
     fi
 }
-show_subd_info "$1" "$2"
+if [ $2 ]
+  then
+    show_subd_info "$1" "$2"
+  else
+    show_subd_info "$1"
+  fi
