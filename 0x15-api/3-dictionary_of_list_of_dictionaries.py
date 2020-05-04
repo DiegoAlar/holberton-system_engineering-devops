@@ -13,19 +13,16 @@ if __name__ == "__main__":
     r_users = requests.get(url_users)
     r_todos = requests.get(url_todos)
     users_dict = {}
-    try:
-        list_users = r_users.json()
-        list_todos = r_todos.json()
-        for user in list_users:
-            list_of_todos = []
-            users_dict[user.get('id')] = list_of_todos
-            for todo in list_todos:
-                todo_dict = {}
-                todo_dict["username"] = user.get('username')
-                todo_dict["task"] = todo.get('title')
-                todo_dict["completed"] = todo.get('completed')
-                list_of_todos.append(todo_dict)
-        with open('todo_all_employees.json', 'w') as outfile:
-            json.dump(users_dict, outfile)
-    except ValueError:
-        print("Not a valid JSON")
+    list_users = r_users.json()
+    list_todos = r_todos.json()
+    for user in list_users:
+        list_of_todos = []
+        users_dict[user.get('id')] = list_of_todos
+        for todo in list_todos:
+            todo_dict = {}
+            todo_dict["username"] = user.get('username')
+            todo_dict["task"] = todo.get('title')
+            todo_dict["completed"] = todo.get('completed')
+            list_of_todos.append(todo_dict)
+    with open('todo_all_employees.json', 'w') as outfile:
+        json.dump(users_dict, outfile)
