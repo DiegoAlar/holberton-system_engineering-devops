@@ -19,7 +19,7 @@ if __name__ == "__main__":
         list_of_todos = []
         users_dict[user.get('id')] = list_of_todos
         for todo in list_todos:
-            if users_dict[user.get('id')] == todo.get('userId'):
+            if user.get('id') == todo.get('userId'):
                 todo_dict = {}
                 todo_dict["username"] = user.get('username')
                 todo_dict["task"] = todo.get('title')
