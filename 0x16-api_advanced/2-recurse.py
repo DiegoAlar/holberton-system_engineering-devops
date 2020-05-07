@@ -10,7 +10,6 @@ def recurse(subreddit, hot_list=[], after=''):
     """  Recurse it!  """
     url = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(
         subreddit, after)
-    print(url)
     headers = {'user-agent': 'X-Modhash'}
     req = requests.get(url, headers=headers)
     if req.history or req.status_code == 404:
