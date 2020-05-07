@@ -21,7 +21,7 @@ def top_ten(subreddit):
         except ValueError:
             print("Not a valid JSON")
     if r.history or r.status_code == 404:
-        return 0
+        print('None')
     else:
         dict_list = a_dict.get('data').get('children')
         for dict_post in dict_list:
