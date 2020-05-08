@@ -13,10 +13,8 @@ def count_words(subreddit, word_list, after='', a_dict=None):
         a_dict = {}
         a_list = []
         for item in word_list:
-            if re.search('_', item):
+            if re.search('_', item) or item in a_dict:
                 pass
-            elif item.lower() in a_dict:
-                a_dict[item] += 1
             else:
                 a_dict[item.lower()] = 0
                 a_list.append(item.lower())
@@ -26,7 +24,7 @@ def count_words(subreddit, word_list, after='', a_dict=None):
     headers = {'user-agent': 'X-Modhash'}
     req = requests.get(url, headers=headers)
     if req.history or req.status_code == 404:
-        print()
+        print('', end='')
     else:
         data = req.json()
         next_after = data.get('data').get('after')
