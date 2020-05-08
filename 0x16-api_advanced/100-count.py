@@ -31,8 +31,9 @@ def count_words(subreddit, word_list, after='', a_dict=None):
                 title = title.get('data').get('title')
                 for word in word_list:
                     if re.search(
-                            r'\b{}\b'.format(
-                                word.lower()), title, re.IGNORECASE):
+                            # r'\b{}\b'.format(
+                            r'(?<!\S){}(?!\S)'.format(
+                                word), title, re.IGNORECASE):
                         a_dict[word] += 1
             count_words(subreddit, word_list, next_after, a_dict)
         else:
