@@ -3,7 +3,7 @@
 function that queries the Reddit API and returns the number of subscribers
 (not active users, total subscribers) for a given subreddit
 """
-from re import search
+import re
 import requests
 
 
@@ -11,11 +11,14 @@ def count_words(subreddit, word_list, after='', a_dict=None):
     """  Recurse it!  """
     if a_dict is None:
         a_dict = {}
+        a_list = []
         for item in word_list:
-            if search('_', item):
+            if re.search('_', item) or item in a_dict:
                 pass
             else:
-                a_dict[item] = 0
+                a_dict[item.lower()] = 0
+                a_list.append(item.lower())
+                word_list = a_list
     url = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(
         subreddit, after)
     headers = {'user-agent': 'X-Modhash'}
@@ -29,7 +32,8 @@ def count_words(subreddit, word_list, after='', a_dict=None):
         for title in req:
             title = title.get('data').get('title')
             for word in word_list:
-                if search(r'\b{}\b'.format(word), title):
+                if re.search(
+                        r'\b{}\b'.format(word.lower()), title, re.IGNORECASE):
                     a_dict[word] += 1
         count_words(subreddit, word_list, next_after, a_dict)
     else:
