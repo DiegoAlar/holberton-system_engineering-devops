@@ -12,7 +12,7 @@ def count_words(subreddit, word_list, after='', a_dict=None):
     if a_dict is None:
         a_dict = {}
         for item in word_list:
-            if re.search('_', item) or item in a_dict:
+            if re.search('_', item) or item.lower() in a_dict:
                 pass
             else:
                 a_dict[item.lower()] = 0
@@ -34,7 +34,7 @@ def count_words(subreddit, word_list, after='', a_dict=None):
                             # r'\b{}\b'.format(
                             r'(?<!\S){}(?!\S)'.format(
                                 word), title, re.IGNORECASE):
-                        a_dict[word] += 1
+                        a_dict[word.lower()] += 1
             count_words(subreddit, word_list, next_after, a_dict)
         else:
             sorted_dict = sorted(
