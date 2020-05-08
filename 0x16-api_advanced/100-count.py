@@ -11,14 +11,11 @@ def count_words(subreddit, word_list, after='', a_dict=None):
     """  Recurse it!  """
     if a_dict is None:
         a_dict = {}
-        a_list = []
         for item in word_list:
             if re.search('_', item) or item in a_dict:
                 pass
             else:
                 a_dict[item.lower()] = 0
-                a_list.append(item.lower())
-                word_list = a_list
     url = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(
         subreddit, after)
     headers = {'user-agent': 'X-Modhash'}
